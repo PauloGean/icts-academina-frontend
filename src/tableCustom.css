@@ -1,0 +1,17 @@
+.minhaTabela{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 500px;
+}
+
+.minhaTabela th{
+    background-color:rgb(49, 136, 213);
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.minhaTabela td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
