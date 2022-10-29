@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api";
+import AppMenu from "../../components/menu/app-menu";
 import Titulo from "../../components/titulo";
 import CursoEdit from "./curso-edit";
 
@@ -30,7 +31,7 @@ function CursoList() {
 
     return (<>
         <div className="App">
-
+            <AppMenu></AppMenu>
             <CursoEdit refresh={listarCursos} curso={cursoEdit}></CursoEdit>
             <Titulo valor="Cursos"></Titulo>
             

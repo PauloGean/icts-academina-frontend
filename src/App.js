@@ -5,15 +5,13 @@ import './tableCustom.css'
 import ClienteList from './pages/cliente/cliente-list';
 import ClienteCreate from './pages/cliente/cliente-create';
 import CursoList from './pages/curso/curso-list';
+import AppRoutes from './routes/app-routes';
 
 function App() {
 
  
   return (
-    <div className="App">
-      <ClienteList></ClienteList>
-      <CursoList></CursoList>
-    </div>
+    <AppRoutes></AppRoutes>
   );
 }
 

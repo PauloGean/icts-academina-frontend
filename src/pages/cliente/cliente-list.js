@@ -5,6 +5,7 @@ import api from '../../api';
 import { useEffect, useState } from 'react';
 import ClienteCreate from './cliente-create';
 import Titulo from '../../components/titulo';
+import AppMenu from '../../components/menu/app-menu';
 function ClienteList(){
     var [clientes, setClientes] = useState([])
 
@@ -41,6 +42,7 @@ function ClienteList(){
   
   return (
     <div className="App">
+      <AppMenu></AppMenu>
       
       <ClienteCreate refresh={listarClientes} show={show} cliente={cliente}></ClienteCreate>
 
