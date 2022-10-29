@@ -67,7 +67,7 @@ function ClienteCreate(props) {
 
     return (
         <>
-            {showView==true ?
+            
                 <div >
                     {novo ? <Titulo valor="Cadastrar Cliente" /> : <Titulo valor="Atualizar Cliente" />}
 
@@ -93,7 +93,7 @@ function ClienteCreate(props) {
 
                     </form>
 
-                </div>:""}
+                </div>
 
         </>
     );
