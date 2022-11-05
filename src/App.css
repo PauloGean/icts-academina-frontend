@@ -5,7 +5,7 @@
 
 
 .App-header {
-  background-color: #282c34;
+  background-color: #732547;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,3 +15,24 @@
   color: white;
 }
 
+nav {
+  width: 100%;
+  display: flex;
+  /* position: fixed; */
+  background-color: rgb(195, 39, 96);
+  z-index: 99;
+  top: '0px'
+}
+
+nav a {
+  color: #fff;
+  margin: auto 20px auto 40px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav li {
+  float: left;
+  list-style: none;
+  margin-left: 20px;
+}
