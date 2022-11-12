@@ -18,6 +18,11 @@ function AppMenu() {
                              Cliente
                         </Link>
                     </li>
+                    <li>
+                       <Link to="/matricula" >
+                             Matricula
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </>

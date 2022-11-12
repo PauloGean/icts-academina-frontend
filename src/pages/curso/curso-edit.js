@@ -24,6 +24,9 @@ function CursoEdit(props) {
     }, [props.curso])
 
 
+
+
+
     function salvar() {
         const dados = { 'nome': nome, 'descricao': descricao }
         console.log(dados)

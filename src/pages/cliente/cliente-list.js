@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import ClienteCreate from './cliente-create';
 import Titulo from '../../components/titulo';
 import AppMenu from '../../components/menu/app-menu';
+import { Link } from 'react-router-dom';
 function ClienteList(){
     var [clientes, setClientes] = useState([])
 
@@ -50,7 +51,7 @@ function ClienteList(){
 
       <button  type='button' onClick={e=>listarClientes()}>Listar</button>
       <button  type='button' onClick={e=>editar(null)}>Novo</button>
-
+      <Link to={`/cliente/create`}>Novo</Link>
       <table className='minhaTabela'>
         {/* CABECALHO */}
         <tr>
@@ -68,6 +69,8 @@ function ClienteList(){
               <td> 
                 <button onClick={e=>deletarClientes(c.idcliente)} type='button'>Excluir</button>
                 <button onClick={e=>editar(c)} type='button'>Editar</button>
+
+                <Link to={`/cliente/${c.idcliente}`}>Editar</Link>
               </td>
 
             </tr>)
