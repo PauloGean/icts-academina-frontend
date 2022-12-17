@@ -30,11 +30,22 @@ function CursoEdit(props) {
     function salvar() {
         const dados = { 'nome': nome, 'descricao': descricao }
         console.log(dados)
-        api.post('curso', dados).then(() => {
+
+        api.post('curso', dados).then(()=>{
             setNome('')
             setDescricao('')
             props.refresh()
+        }
+        ).catch(function (error) {
+
+            alert(error.message)
         })
+        // api.post('curso', dados)
+        // .then(() => {
+        //     setNome('')
+        //     setDescricao('')
+        //     props.refresh()
+        // })
     }
 
     function atualizar() {

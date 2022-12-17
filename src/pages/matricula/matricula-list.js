@@ -51,8 +51,8 @@ function MatriculaList() {
                     matriculas.map(e => {
                         return (
                             <tr key={e.idmatricula}>
-                                <td> {e.idcliente} </td>
-                                <td> {e.idcurso} </td>
+                                <td> {e.cliente.nome} </td>
+                                <td> {e.curso.nome} </td>
                                 <td>
                                     <button onClick={c=>deletar(e.idmatricula)}>Excluir</button>
                                     <button type='button'  onClick={c=>editar(e)}>Editar</button> 
