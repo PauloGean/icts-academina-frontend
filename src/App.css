@@ -15,3 +15,24 @@
   color: white;
 }
 
+nav {
+  width: 100%;
+  display: flex;
+  /* position: fixed; */
+  background-color: #00ff;
+  z-index: 99;
+  top:0px;
+}
+
+nav a {
+  color: #fff;
+  margin: auto 20px auto 40px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav li {
+  float: left;
+  list-style: none;
+  margin-left: 20px;
+}

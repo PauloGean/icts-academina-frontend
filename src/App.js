@@ -4,15 +4,14 @@ import './MeuCss.css'
 import './tableCustom.css'
 import ClienteList from './pages/cliente/cliente-list';
 import ClienteCreate from './pages/cliente/cliente-create';
+import CursoList from './pages/curso/curso-list';
+import AppRoutes from './routes/app-routes';
 
 function App() {
 
  
   return (
-    <div className="App">
-      <ClienteCreate></ClienteCreate>
-      <ClienteList></ClienteList>
-    </div>
+    <AppRoutes></AppRoutes>
   );
 }
 

@@ -3,8 +3,16 @@ import '../../MeuCss.css'
 import '../../tableCustom.css'
 import api from '../../api';
 import { useEffect, useState } from 'react';
+import ClienteCreate from './cliente-create';
+import Titulo from '../../components/titulo';
+import AppMenu from '../../components/menu/app-menu';
+import { Link } from 'react-router-dom';
 function ClienteList(){
     var [clientes, setClientes] = useState([])
+
+    var [cliente, setCliente] = useState(null)
+    var [show, setShow] = useState(false)
+
     useEffect(() => {
 		listarClientes()
 	},[])
@@ -16,26 +24,58 @@ function ClienteList(){
       console.log(clientes)
     });
   }
+
+  function deletarClientes(id){
+    console.log("deletarClientes")
+    console.log(id)
+    api.delete('cliente/'+id).then((response) => {
+      console.log("Deletado com sucesso")
+      listarClientes()
+    });
+  }
+
+  function editar(clienteItem){
+    console.log(clienteItem)
+    setCliente(clienteItem)
+    setShow(true);
+
+  }
   
   return (
     <div className="App">
-      <h1 className='meuTitulo'>Clientes</h1>
+      <AppMenu></AppMenu>
+      
+      <ClienteCreate refresh={listarClientes} show={show} cliente={cliente}></ClienteCreate>
 
-      <button onClick={listarClientes}>Listar</button>
+      <Titulo valor="Clientes"></Titulo>
 
+      <button  type='button' onClick={e=>listarClientes()}>Listar</button>
+      <button  type='button' onClick={e=>editar(null)}>Novo</button>
+      <Link to={`/cliente/create`}>Novo</Link>
       <table className='minhaTabela'>
         {/* CABECALHO */}
         <tr>
           <th>NOME</th>
           <th>CPF </th>
+          <th>#</th>
+
         </tr>
         {/* Linhas */}
         {clientes.map((c) => {
           return (
-            <tr>
+            <tr key={'row_'+c.idcliente}>
               <td>{c.nome} </td>
               <td> {c.cpf}</td>
+              <td> 
+                <button onClick={e=>deletarClientes(c.idcliente)} type='button'>Excluir</button>
+                <button onClick={e=>editar(c)} type='button'>Editar</button>
+
+                <Link to={`/cliente/${c.idcliente}`}>Editar</Link>
+              </td>
+
             </tr>)
+
+            
         })}
       </table>
     </div>

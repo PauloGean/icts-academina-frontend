@@ -2,34 +2,55 @@
 import '../../MeuCss.css'
 
 import api from '../../api';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Titulo from '../../components/titulo';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function ClienteCreate(props) {
+function ClienteEdit(props) {
     const [nome, setNome] = useState("");
     const [cpf, setCpf] = useState("");
     const [novo, setNovo] = useState(true)
     const [id, setId] = useState(null);
     const [showView, setShowView] = useState(false)
 
-    useEffect(() => {
-        if (props.cliente != null) {
-            setNome(props.cliente.nome)
-            setCpf(props.cliente.cpf)
-            setId(props.cliente.idcliente)
+    const { idCliente } = useParams()
+
+    let navigate = useNavigate();
+
+
+// ComponentWillMount() 
+    useLayoutEffect(() => {
+
+        console.log(idCliente)
+        setNovo(false)
+
+        if (idCliente!='create'){
             setNovo(false)
-        } else {
-            setNome('')
-            setCpf('')
-            setId(null)
+            api.get('cliente/'+idCliente).then((response) => {
+                console.log(response.data)
+                const cliente = response.data
+                // goToList()
+                setNome(cliente.nome)
+                setCpf(cliente.cpf)
+                setId(cliente.idcliente)
+                setNovo(false)
+              });
+        }else{
             setNovo(true)
+
         }
-    }, [props.cliente])
 
-    useEffect(() => {
-        setShowView(props.show)
+        
 
-    }, [props.show])
+      }, []);
+
+
+    function goToList(){
+        navigate("/cliente", { replace: true });
+
+    }
+
+
 
 
     function mudouNome(event) {
@@ -41,9 +62,11 @@ function ClienteCreate(props) {
         console.log(dados);
 
         api.post('cliente', dados).then(e => {
-            setNome("");
-            setCpf("");
-            props.refresh()
+
+            goToList()
+            // setNome("");
+            // setCpf("");
+            // props.refresh()
             // alert("Salvo com sucesso");
         })
 
@@ -55,10 +78,12 @@ function ClienteCreate(props) {
         console.log(dados);
 
         api.put('cliente/' + id, dados).then(e => {
-            setNome("");
-            setCpf("");
-            setId(null)
-            props.refresh()
+
+            goToList()
+            // setNome("");
+            // setCpf("");
+            // setId(null)
+            // props.refresh()
             // alert("Salvo com sucesso");
         })
 
@@ -82,6 +107,8 @@ function ClienteCreate(props) {
                                 onChange={(e) => setCpf(e.target.value)} />
                         </label>
                         {/* {someItem ? displayThisIfTrue : displayThisIfFalse} */}
+
+                        <button type='button' onClick={goToList} >Cancelar</button>
                         {novo ?
                             <button type='button' onClick={salvar} >Salvar</button>
                             :
@@ -99,4 +126,4 @@ function ClienteCreate(props) {
     );
 }
 
-export default ClienteCreate;
+export default ClienteEdit;
