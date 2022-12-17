@@ -27,7 +27,7 @@ function CursoEdit(props) {
 
 
 
-    function salvar() {
+    function async salvar() {
         const dados = { 'nome': nome, 'descricao': descricao }
         console.log(dados)
 
@@ -40,12 +40,7 @@ function CursoEdit(props) {
            const msg= error.response.data.message
            alert(msg)
         })
-        // api.post('curso', dados)
-        // .then(() => {
-        //     setNome('')
-        //     setDescricao('')
-        //     props.refresh()
-        // })
+
     }
 
     function atualizar() {
@@ -72,7 +67,7 @@ function CursoEdit(props) {
                     value={descricao}
                     onChange={e => setDescricao(e.target.value)} />
                 {novo ?
-                    <button type="button" onClick={salvar}>Salvar</button>
+                    <button type="button" disabled={!descricao || !nome } onClick={salvar}>Salvar</button>
                     :
                     <button type="button" onClick={atualizar}>Atualizar</button>
                 }
