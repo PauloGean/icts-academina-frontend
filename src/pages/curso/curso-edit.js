@@ -36,9 +36,9 @@ function CursoEdit(props) {
             setDescricao('')
             props.refresh()
         }
-        ).catch(function (error) {
-
-            alert(error.message)
+        ).catch((error)=> {
+           const msg= error.response.data.message
+           alert(msg)
         })
         // api.post('curso', dados)
         // .then(() => {
