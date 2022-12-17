@@ -27,7 +27,7 @@ function CursoEdit(props) {
 
 
 
-    function async salvar() {
+    function salvar() {
         const dados = { 'nome': nome, 'descricao': descricao }
         console.log(dados)
 
