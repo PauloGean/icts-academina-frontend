@@ -50,7 +50,10 @@ function CursoEdit(props) {
             setNome('')
             setDescricao('')
             props.refresh()
-        })
+        }).catch((error)=> {
+            const msg= error.response.data.message
+            alert(msg)
+         })
     }
 
     return (

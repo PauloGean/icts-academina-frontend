@@ -68,7 +68,10 @@ function ClienteEdit(props) {
             // setCpf("");
             // props.refresh()
             // alert("Salvo com sucesso");
-        })
+        }).catch((error)=> {
+            const msg= error.response.data.message
+            alert(msg)
+         })
 
     }
 
@@ -85,7 +88,10 @@ function ClienteEdit(props) {
             // setId(null)
             // props.refresh()
             // alert("Salvo com sucesso");
-        })
+        }).catch((error)=> {
+            const msg= error.response.data.message
+            alert(msg)
+         })
 
     }
 

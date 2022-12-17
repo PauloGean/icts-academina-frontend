@@ -52,7 +52,10 @@ function MatriculaEdit(props) {
             setIdCliente('')
             setIdCurso('')
             props.refresh()
-        })
+        }).catch((error)=> {
+            const msg= error.response.data.message
+            alert(msg)
+         })
     }
 
     function atualizar() {
@@ -62,7 +65,10 @@ function MatriculaEdit(props) {
             setIdCliente('')
             setIdCurso('')
             props.refresh()
-        })
+        }).catch((error)=> {
+            const msg= error.response.data.message
+            alert(msg)
+         })
     }
 
 

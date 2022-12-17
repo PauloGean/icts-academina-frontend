@@ -45,9 +45,9 @@ function CursoList() {
                     <th>  </th>
                 </tr>
                 {
-                    cursos.map(e => {
+                    cursos.map((e,index) => {
                         return (
-                            <tr key={e.idcurso}>
+                            <tr key={index}>
                                 <td> {e.nome} </td>
                                 <td> {e.descricao} </td>
                                 <td>
